@@ -1,0 +1,206 @@
+body,
+html {
+    margin: 0;
+    padding: 0
+}
+
+body {
+    font-family: roboto, Arial, sans-serif;
+    background-color: #f9f9f9;
+    color: #333
+}
+
+.containermain {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, .1)
+}
+
+header .containermain {
+    display: flex;
+    justify-content: space-between;
+    align-items: center
+}
+
+header .logo {
+    display: flex;
+    align-items: center
+}
+
+header .logo img {
+    width: 50px;
+    height: auto;
+    margin-right: 10px
+}
+
+header h1 {
+    margin: 0;
+    font-size: 24px;
+    color: #fff
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center
+}
+
+nav ul li {
+    margin: 0 15px;
+    flex: 1
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    transition: all .3s ease;
+    text-align: center;
+    display: block;
+    padding: 10px 20px;
+    box-sizing: border-box
+}
+
+nav ul li a:hover {
+    text-decoration: underline
+}
+
+p {
+    line-height: 1.5
+}
+
+.container {
+    width: 1000px;
+    margin: auto;
+    min-height: 500px;
+    margin-bottom: 20px
+}
+
+main {
+    padding-top: 150px
+}
+
+section {
+    padding: 60px 0;
+    background-color: #fff;
+    text-align: center
+}
+
+section h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+    color: #1e90ff
+}
+
+section p {
+    font-size: 18px;
+    color: #666
+}
+
+section ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px
+}
+
+section ul li {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 10px
+}
+
+footer {
+    background-color: #333;
+    color: #a0a0a0;
+    padding: 20px 0;
+    text-align: center;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    clear: both
+}
+
+footer p {
+    margin: 0;
+    color: #a0a0a0a0
+}
+
+h1,
+h2,
+h3 {
+    color: #1e90ff
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0
+}
+
+table th,
+table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center
+}
+
+table th {
+    background-color: #1e90ff;
+    color: #fff;
+    font-weight: 700
+}
+
+.summary {
+    color: #fff;
+    background-color: red;
+    padding: 10px;
+    margin-bottom: 100px;
+    text-align: center
+}
+
+@media screen and (max-width:768px) {
+    header .containermain {
+        padding: 0 10px
+    }
+
+    header .logo img {
+        width: 40px
+    }
+
+    header h1 {
+        font-size: 20px
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+        padding-top: 10px
+    }
+
+    nav ul li {
+        margin: 10px 0
+    }
+
+    main {
+        padding-top: 120px
+    }
+
+    .container {
+        width: 95%
+    }
+}

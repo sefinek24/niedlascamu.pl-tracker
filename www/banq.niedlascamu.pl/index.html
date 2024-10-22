@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formularz transakcji</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        #email-container,
+        #transaction-date-container {
+            display: flex;
+            align-items: center;
+        }
+
+        #email-container span,
+        #transaction-date-container span {
+            margin-left: 10px;
+            color: gray;
+        }
+    </style>
+    <script>
+        function updateTransactionDetailsLabel() {
+            const transactionType = document.getElementById('transaction_type').value;
+            const transactionDetailsLabel = document.getElementById('transaction_details_label');
+            const accountantDetails = document.getElementById('accountant_details');
+
+            if (transactionType === 'przelew') {
+                transactionDetailsLabel.textContent = 'Numer konta odbiorcy przelewu:';
+                accountantDetails.style.display = 'block';
+            } else if (transactionType === 'wpłata na kartę') {
+                transactionDetailsLabel.textContent = 'Numer karty na którą wpłacałeś: (może być niepełny)';
+                accountantDetails.style.display = 'none';
+            } else {
+                transactionDetailsLabel.textContent = 'Dane transakcji:';
+                accountantDetails.style.display = 'none';
+            }
+        }
+
+        function saveFormData() {
+            const email = document.getElementById('email').value;
+            const transactionDate = document.getElementById('transaction_date').value;
+            localStorage.setItem('email', email);
+            localStorage.setItem('transaction_date', transactionDate);
+        }
+
+        function loadFormData() {
+            const email = localStorage.getItem('email');
+            const transactionDate = localStorage.getItem('transaction_date');
+            if (email) {
+                document.getElementById('email').value = email;
+                document.getElementById('email-container').insertAdjacentHTML('beforeend',
+                    '<span>(wpisano automatycznie)</span>');
+            }
+            if (transactionDate) {
+                document.getElementById('transaction_date').value = transactionDate;
+                document.getElementById('transaction-date-container').insertAdjacentHTML('beforeend',
+                    '<span>(wpisano automatycznie)</span>');
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', loadFormData);
+    </script>
+    <script src="https://www.google.com/recaptcha/api.js?render=6LfThUQqAAAAAOYtw-B2pKvgrbdnUQXoFXh9tMYl"></script>
+    <script>
+        grecaptcha.ready(function() {
+            grecaptcha.execute('6LfThUQqAAAAAOYtw-B2pKvgrbdnUQXoFXh9tMYl', {
+                action: 'submit'
+            }).then(function(token) {
+                document.getElementById('recaptchaResponse').value = token;
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <h1>Wprowadź dane transakcji</h1>
+    <p><b>Dlaczego potrzebujemy tych danych?</b><br>Sami nie wiemy, mamy bardzo dużo pracy, więc postanowiliśmy
+        stworzyć kolejny, nikomu nie potrzebny projekt aby dołożyć sobie kolejnej roboty</p>
+    <form action="insert.php" method="post" onsubmit="saveFormData()">
+        <div class="form-row">
+            <label id="lemail" for="email">Twój adres e-mail:</label>
+            <input type="email" id="email" name="email" required="">
+        </div>
+        <div class="form-row">
+            <label id="ltrans" for="transaction_date">Data transakcji (DD.MM.RRRR):</label>
+            <input type="date" id="transaction_date" name="transaction_date" required="">
+        </div>
+        <div class="form-row">
+            <label for="transaction_type">Typ transakcji:</label>
+            <select id="transaction_type" name="transaction_type" required=""
+                onchange="updateTransactionDetailsLabel()">
+                <option value="przelew" selected="">Przelew (przelew na numer konta)</option>
+                <option value="płatność kartą">Płatność kartą (jak zakupy przez internet)</option>
+                <option value="wpłata na kartę">Wpłata na kartę (przez REVOLUT)</option>
+            </select>
+        </div>
+        <div class="form-row">
+            <label for="transaction_details" id="transaction_details_label">Numer konta odbiorcy przelewu:</label>
+            <textarea id="transaction_details" name="transaction_details" required=""></textarea>
+        </div>
+        <div class="form-row">
+            <label for="transaction_amount">Kwota transakcji:</label>
+            <input type="number" id="transaction_amount" name="transaction_amount" required="" step="0.01">
+        </div>
+        <div class="form-row">
+            <label for="currency">Waluta:</label>
+            <select id="currency" name="currency" required="">
+                <option value="zł">PLN</option>
+                <option value="usd">USD</option>
+                <option value="eur">EUR</option>
+            </select>
+        </div>
+        <div class="form-row" id="accountant_details">
+            <label for="transaction_details2">Imię i nazwisko odbiorcy przelewu (księgowego):</label>
+            <textarea id="transaction_details2" name="transaction_details2"></textarea>
+        </div>
+        <input type="hidden" name="recaptcha_response" id="recaptchaResponse">
+        <div class="form-row">
+            <input type="submit" value="Zapisz">
+        </div>
+    </form>
+    <script defer=""
+        src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015"
+        integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ=="
+        crossorigin="anonymous"></script>
+
+
+</body>
+
+</html>
