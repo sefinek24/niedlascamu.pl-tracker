@@ -71,6 +71,7 @@
             });
         });
     </script>
+
 </head>
 
 <body>
@@ -82,10 +83,12 @@
             <label id="lemail" for="email">Twój adres e-mail:</label>
             <input type="email" id="email" name="email" required="">
         </div>
+
         <div class="form-row">
             <label id="ltrans" for="transaction_date">Data transakcji (DD.MM.RRRR):</label>
             <input type="date" id="transaction_date" name="transaction_date" required="">
         </div>
+
         <div class="form-row">
             <label for="transaction_type">Typ transakcji:</label>
             <select id="transaction_type" name="transaction_type" required=""
@@ -95,14 +98,17 @@
                 <option value="wpłata na kartę">Wpłata na kartę (przez REVOLUT)</option>
             </select>
         </div>
+
         <div class="form-row">
             <label for="transaction_details" id="transaction_details_label">Numer konta odbiorcy przelewu:</label>
             <textarea id="transaction_details" name="transaction_details" required=""></textarea>
         </div>
+
         <div class="form-row">
             <label for="transaction_amount">Kwota transakcji:</label>
             <input type="number" id="transaction_amount" name="transaction_amount" required="" step="0.01">
         </div>
+
         <div class="form-row">
             <label for="currency">Waluta:</label>
             <select id="currency" name="currency" required="">
@@ -111,11 +117,14 @@
                 <option value="eur">EUR</option>
             </select>
         </div>
+
         <div class="form-row" id="accountant_details">
             <label for="transaction_details2">Imię i nazwisko odbiorcy przelewu (księgowego):</label>
             <textarea id="transaction_details2" name="transaction_details2"></textarea>
         </div>
+
         <input type="hidden" name="recaptcha_response" id="recaptchaResponse">
+
         <div class="form-row">
             <input type="submit" value="Zapisz">
         </div>
@@ -124,6 +133,7 @@
         src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015"
         integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ=="
         crossorigin="anonymous"></script>
+
 
 
 </body>
